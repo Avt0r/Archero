@@ -31,7 +31,7 @@ public abstract class JoystickHandler : MonoBehaviour, IDragHandler, IPointerDow
     {
         Vector2 joystickPosition;
 
-        if( RectTransformUtility.ScreenPointToLocalPointInRectangle(_joystickBackground.rectTransform, eventData.position, Camera.main, out joystickPosition))
+        if( RectTransformUtility.ScreenPointToLocalPointInRectangle(_joystickBackground.rectTransform, eventData.position, null, out joystickPosition))
         {
             joystickPosition.x = (joystickPosition.x * 2 / _joystickBackground.rectTransform.sizeDelta.x);
             joystickPosition.y = (joystickPosition.y * 2 / _joystickBackground.rectTransform.sizeDelta.y);
@@ -52,7 +52,7 @@ public abstract class JoystickHandler : MonoBehaviour, IDragHandler, IPointerDow
 
         Vector2 joystickBackgroundPosition;
 
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_joystickArea.rectTransform, eventData.position, Camera.main, out joystickBackgroundPosition))
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_joystickArea.rectTransform, eventData.position, null, out joystickBackgroundPosition))
         {
             _joystickBackground.rectTransform.anchoredPosition = new Vector2(joystickBackgroundPosition.x, joystickBackgroundPosition.y);
         }

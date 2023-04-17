@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class JoystickForMovement : JoystickHandler
 {
-    public Vector3 ReturnVectorDirection()
+    [SerializeField] private CharacterMovement _characterMovement;
+
+    private void Update()
     {
-        if (_inputVector.x != 0 || _inputVector.y != 0) return new Vector3(_inputVector.x, 0, _inputVector.y);
-        else return new Vector3(Input.GetAxis("Hotizontal"), 0, Input.GetAxis("Vertical"));
-    }
-   
+        if(_inputVector.x != 0 || _inputVector.y != 0)
+        {
+            _characterMovement.MoveCharacter(new Vector3(_inputVector.x, 0, _inputVector.y));
+            _characterMovement.RotateCharacter(new Vector3(_inputVector.x, 0, _inputVector.y));        
+        }
+    }   
 }
